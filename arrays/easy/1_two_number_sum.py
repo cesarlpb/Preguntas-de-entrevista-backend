@@ -35,6 +35,8 @@ test_dict = {
 print(test_dict)
 
 #%% Solución - 1 -> dos bucles for
+# Dos bucles for -> n^2 en tiempo siendo n = len(lista)
+# space -> no requiere guardar muchos datos
 def sumarDosNumeros(lista, target):
     for i in range(len(lista)-1):
         a = lista[i]
@@ -43,18 +45,29 @@ def sumarDosNumeros(lista, target):
             if a + b == target:
                 return [a, b]
     return []
-# Probramos los ejemplos:
+# Probamos los ejemplos:
 res1 = sumarDosNumeros(array_de_ejemplo1, suma_objetivo1)
 res2 = sumarDosNumeros(array_de_ejemplo2, suma_objetivo2)
 
 if res1 == output1:
-    print("Test 1 -", res1, output1)
-    print(True)
+    print("Test 1 -", res1, output1, True)
 if res2 == output2:
-    print("Test 2 -", res2, output2)
-    print(True)
+    print("Test 2 -", res2, output2, True)
 #%% Solución - 2
-
+# n -> time, n -> space
+def sumarDosNumeros2(lista, target):
+    dic = {} # hashmap, tabla, tabla hash... -> dict -> key, value
+    for a in lista:
+        # a + b = target -> b = target - a 
+        b = target - a
+        if b in dic:
+            return [a, b]
+        else: 
+            dic[a] = True
+        # print(dic)
+    return []
+sumarDosNumeros2(array_de_ejemplo1, suma_objetivo1) # [-1, 11]
+sumarDosNumeros2(array_de_ejemplo2, suma_objetivo2) # []
 #%% Solución - 3 
 
 
