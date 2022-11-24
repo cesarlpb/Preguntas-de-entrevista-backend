@@ -3,11 +3,70 @@
 # en cualquier orden. Si no hay dos números que sumen la suma objetivo, la función debe devolver  un array vacío.
 
 # Ejemplos
-# 1
+#%% 1
 array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
 suma_objetivo = 10
 output = [11, -1]
-# 2
+#%% 2
 array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
 suma_objetivo = 20
 output= []
+
+#%% Tests
+arr_test_1 = [3, 5, -4, 8, 11, 1, -1, 6]
+arr_test_2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
+arr_test_3 = [-21, 301, 12, 4, 65, 56, 210, 356, 9, -47]
+test_dict = {
+    "1": (arr_test_1, 10),
+    "2": (arr_test_1, 20),
+    "3": ([4, 6], 10),
+    "4": ([4, 6, 1], 5), 
+    "5": ([4, 6, 1, -3], 3), 
+    "6": ([1, 2, 3, 4, 5, 6, 7, 8, 9], 17), 
+    "7": (arr_test_2, 18),
+    "8": ([1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 18),
+    "9": ([-7, -5, -3, -1, 0, 1, 3, 5, 7], -5),
+    "10":(arr_test_3, 163),
+    "11":(arr_test_3, 164), 
+    "12":([3, 5, -4, 8, 11, 1, -1, 6], 15),
+    "13":([14], 15),
+    "14":([15], 15)
+}
+print(test_dict)
+
+#%% Solución - 1
+
+#%% Solución - 2
+
+#%% Solución - 3 
+
+
+#%% Solución - marta
+def sumaDos(arr, N):
+   b = True
+   i,j = 0, 0
+   sol = []
+   while b and j != len(arr):
+       while b and i < len(arr):
+           if arr[j] + arr[i] == N:
+               b = False
+               sol = [arr[j], arr[i]]
+           i += 1
+       j += 1
+       i = j+1
+   return sol
+
+array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
+suma_objetivo = 10
+sumaDos(array_de_ejemplo, suma_objetivo)
+
+#%% Solución - 2
+def twoSum(nums, target):
+    dif={}
+    for i, num in enumerate(nums):
+        n=target-num
+        if n not in dif:
+            dif[num]=i
+        else:
+            return [dif[n], i]
+# tests
