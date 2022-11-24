@@ -88,7 +88,9 @@ def sumarDosNumeros3(lista, target):
 sumarDosNumeros3(array_de_ejemplo1, suma_objetivo1) # [-1, 11]
 sumarDosNumeros3(array_de_ejemplo2, suma_objetivo2) # []
 
-#%% Solución - marta
+#%% Solución - Marta
+# arr -> lista 
+# target -> N
 def sumaDos(arr, N):
    b = True
    i,j = 0, 0
@@ -107,13 +109,62 @@ array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
 suma_objetivo = 10
 sumaDos(array_de_ejemplo, suma_objetivo)
 
-#%% Solución - 2
+#%% Solución - Marta
+# lista -> nums
+# n en tiempo
+# espacio -> n
 def twoSum(nums, target):
     dif={}
+    # i es el índice: 0, 1, ... len(nums) - 1
+    # num es el valor: 3, 5, -4 ... 6
     for i, num in enumerate(nums):
         n=target-num
         if n not in dif:
             dif[num]=i
+            # print(dif)
         else:
-            return [dif[n], i]
-# tests
+            # return [dif[n], i]  # devuelve índices de 11 y -1 -> [4,6]
+            return [nums[dif[n]], nums[i]] # modificación para salida con valores [11,-1]
+    return [] # retorno en caso de no encontrar match
+
+array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
+suma_objetivo = 10
+twoSum(array_de_ejemplo, suma_objetivo) # retorna índices de los valores que hacen match
+
+#%% Batería de tests
+arr_test_1 = [3, 5, -4, 8, 11, 1, -1, 6]
+arr_test_2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
+arr_test_3 = [-21, 301, 12, 4, 65, 56, 210, 356, 9, -47]
+test_dict = {
+    "1": (arr_test_1, 10),
+    "2": (arr_test_1, 20),
+    "3": ([4, 6], 10),
+    "4": ([4, 6, 1], 5), 
+    "5": ([4, 6, 1, -3], 3), 
+    "6": ([1, 2, 3, 4, 5, 6, 7, 8, 9], 17), 
+    "7": (arr_test_2, 18),
+    "8": ([1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 18),
+    "9": ([-7, -5, -3, -1, 0, 1, 3, 5, 7], -5),
+    "10":(arr_test_3, 163),
+    "11":(arr_test_3, 164), 
+    "12":([3, 5, -4, 8, 11, 1, -1, 6], 15),
+    "13":([14], 15),
+    "14":([15], 15)
+}
+def bateriaTests():
+    for k in test_dict:
+        # pasaTest = False
+        tupla = test_dict[k]
+        lista = tupla[0]
+        target = tupla[1]
+        # res = sumarDosNumeros(lista, target)
+        # res = sumarDosNumeros2(lista, target)
+        # res = sumarDosNumeros3(lista, target)
+        # res = sumaDos(lista, target)
+        res = twoSum(lista, target)
+        print(k, lista, target, "Resultado:", res)
+
+bateriaTests()
+
+# To do: anotar todos los resultados para estos inputs y 
+# validar en tests
