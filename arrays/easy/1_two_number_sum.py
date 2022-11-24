@@ -130,7 +130,21 @@ def twoSum(nums, target):
 array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
 suma_objetivo = 10
 twoSum(array_de_ejemplo, suma_objetivo) # retorna índices de los valores que hacen match
+# Solución - Anton
+import random
+def ej_1():
+    lista = [ x+random.randint(-10,10) for x in range(0,10) ] # list comprehension
+    suma_objetivo=random.randint(0,10)
+    for i in range(len(lista) - 1):
+        for i2 in range(i, len(lista)):
+            if lista[i] + lista[i2] == suma_objetivo:
+                output=[lista[i], lista[i2]]
+                return ( lista, suma_objetivo, output )
+            else:
+                output=[]
+    return ( lista, suma_objetivo, output)
 
+ej_1()
 #%% Batería de tests
 arr_test_1 = [3, 5, -4, 8, 11, 1, -1, 6]
 arr_test_2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]
