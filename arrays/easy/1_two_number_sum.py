@@ -4,13 +4,13 @@
 
 # Ejemplos
 #%% 1
-array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
-suma_objetivo = 10
-output = [11, -1]
+array_de_ejemplo1 = [3, 5, -4, 8, 11, 1, -1, 6]
+suma_objetivo1 = 10
+output1 = [11, -1]
 #%% 2
-array_de_ejemplo = [3, 5, -4, 8, 11, 1, -1, 6]
-suma_objetivo = 20
-output= []
+array_de_ejemplo2 = [3, 5, -4, 8, 11, 1, -1, 6]
+suma_objetivo2 = 20
+output2= []
 
 #%% Tests
 arr_test_1 = [3, 5, -4, 8, 11, 1, -1, 6]
@@ -34,8 +34,25 @@ test_dict = {
 }
 print(test_dict)
 
-#%% Solución - 1
+#%% Solución - 1 -> dos bucles for
+def sumarDosNumeros(lista, target):
+    for i in range(len(lista)-1):
+        a = lista[i]
+        for j in range(i+1, len(lista)):
+            b = lista[j]
+            if a + b == target:
+                return [a, b]
+    return []
+# Probramos los ejemplos:
+res1 = sumarDosNumeros(array_de_ejemplo1, suma_objetivo1)
+res2 = sumarDosNumeros(array_de_ejemplo2, suma_objetivo2)
 
+if res1 == output1:
+    print("Test 1 -", res1, output1)
+    print(True)
+if res2 == output2:
+    print("Test 2 -", res2, output2)
+    print(True)
 #%% Solución - 2
 
 #%% Solución - 3 
