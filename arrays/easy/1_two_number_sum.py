@@ -69,7 +69,24 @@ def sumarDosNumeros2(lista, target):
 sumarDosNumeros2(array_de_ejemplo1, suma_objetivo1) # [-1, 11]
 sumarDosNumeros2(array_de_ejemplo2, suma_objetivo2) # []
 #%% Solución - 3 
+# n en tiempo
+# poco en espacio -> solo se usan las dos variables de índices
+def sumarDosNumeros3(lista, target):
+    lista.sort() # ordenamos lista asc
+    izq = 0
+    der = len(lista) - 1
+    while izq < der:
+        suma = lista[izq] + lista[der]
+        if suma == target:
+            return [lista[izq], lista[der]]
+        elif suma < target:
+            izq += 1
+        elif suma > target:
+            der -= 1
+    return []
 
+sumarDosNumeros3(array_de_ejemplo1, suma_objetivo1) # [-1, 11]
+sumarDosNumeros3(array_de_ejemplo2, suma_objetivo2) # []
 
 #%% Solución - marta
 def sumaDos(arr, N):
