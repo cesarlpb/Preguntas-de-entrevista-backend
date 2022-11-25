@@ -43,15 +43,16 @@ def es_subarr_valido(arr, sub_arr):
                 print(el, el2, idx)
                 contador += 1
                 break
-
+    
+    # Esta función no funciona para bucles repetidos
+    
     print(contador, len(sub_arr), contador == len(sub_arr))
     return contador == len(sub_arr) # si contador es 2
 #%% Tests iniciales
-es_subarr_valido(arr, sub_arr)   # True
-es_subarr_valido(arr2, sub_arr2) # True
-es_subarr_valido(arr3, sub_arr3) # Debe retornar False
-#%% Solución 2 con while
-
+# es_subarr_valido(arr, sub_arr)   # True
+# es_subarr_valido(arr2, sub_arr2) # True
+# es_subarr_valido(arr3, sub_arr3) # False
+es_subarr_valido([1, 2, 3, 4, 1], [1, 4, 1]) # True
 
 #%% Solución - Marta
 ''' Por cada elemento (value) en el sub_array
@@ -71,5 +72,25 @@ def subArr(arr, sub_arr):
                b = (value == arr[i]) # si es igual es true, sino es false
                i+= 1
        return b
+#%% Tests
+subArr(arr, sub_arr)   # True
+subArr(arr2, sub_arr2) # True
+subArr(arr3, sub_arr3) # False
+#%% Solución 2 con while
+# n en tiempo
 
+def es_subarr_valido2(arr, sub_arr):
+    i, j = 0, 0 # idx de arr, idx de sub_arr
+    while i < len(arr) and j < len(sub_arr):
+        if arr[i] == sub_arr[j]:
+            j += 1  # Como este aumenta cuando hay match
+                    # nos sirve de guía para saber si hemos
+                    # encontrado todos los nums del sub_arr
+        i += 1
+    return j == len(sub_arr)
 
+#%% Tests iniciales 2
+es_subarr_valido2(arr, sub_arr)   # True
+es_subarr_valido2(arr2, sub_arr2) # True
+es_subarr_valido2(arr3, sub_arr3) # False
+es_subarr_valido2([1, 2, 3, 4, 1], [1, 4, 1]) # True
